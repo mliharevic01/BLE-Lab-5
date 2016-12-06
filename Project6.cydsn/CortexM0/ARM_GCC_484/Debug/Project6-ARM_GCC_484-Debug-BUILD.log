@@ -1,8 +1,0 @@
---------------- Build Started: 12/06/2016 00:11:17 Project: Project6, Configuration: ARM GCC 4.8.4 Debug ---------------
-cydsfit.exe -.appdatapath "C:\Users\Heidi\AppData\Local\Cypress Semiconductor\PSoC Creator\3.1" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p "C:\Users\Heidi\Documents\PSoC Creator\Project6\Project6.cydsn\Project6.cyprj" -d CY8C4014LQI-422 -s "C:\Users\Heidi\Documents\PSoC Creator\Project6\Project6.cydsn\Generated_Source\PSoC4" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE
-Elaborating Design...
-ADD: sdb.M0050: error: Terminal "clock" requires connection when it is visible.
- * C:\Users\Heidi\Documents\PSoC Creator\Project6\Project6.cydsn\TopDesign\TopDesign.cysch (Signal: Net_4)
- * C:\Users\Heidi\Documents\PSoC Creator\Project6\Project6.cydsn\TopDesign\TopDesign.cysch (Shape_1.8)
-Error: cdf.M0005: CyDsFit aborted due to errors, please address all errors and rerun CyDsFit. (App=cydsfit)
---------------- Build Failed: 12/06/2016 00:11:19 ---------------
