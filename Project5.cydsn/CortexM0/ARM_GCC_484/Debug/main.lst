@@ -1,0 +1,470 @@
+ARM GAS  C:\Users\mliha\AppData\Local\Temp\cclu3FoX.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC0:
+  20 0000 43593843 		.ascii	"CY8CKIT-042-BLE\000"
+  20      4B49542D 
+  20      3034322D 
+  20      424C4500 
+  21              		.align	2
+  22              	.LC2:
+  23 0010 54686520 		.ascii	"The symbol recieved is: \000"
+  23      73796D62 
+  23      6F6C2072 
+  23      65636965 
+  23      76656420 
+  24 0029 000000   		.section	.text.main,"ax",%progbits
+  25              		.align	2
+  26              		.global	main
+  27              		.code	16
+  28              		.thumb_func
+  29              		.type	main, %function
+  30              	main:
+  31              	.LFB35:
+  32              		.file 1 ".\\main.c"
+   1:.\main.c      **** /* ========================================
+   2:.\main.c      ****  *
+   3:.\main.c      ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\main.c      ****  * All Rights Reserved
+   5:.\main.c      ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\main.c      ****  *
+   7:.\main.c      ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\main.c      ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\main.c      ****  *
+  10:.\main.c      ****  * ========================================
+  11:.\main.c      **** */
+  12:.\main.c      **** #include <project.h>
+  13:.\main.c      **** 
+  14:.\main.c      **** 
+  15:.\main.c      **** int main()
+  16:.\main.c      **** {
+  33              		.loc 1 16 0
+  34              		.cfi_startproc
+ARM GAS  C:\Users\mliha\AppData\Local\Temp\cclu3FoX.s 			page 2
+
+
+  35 0000 80B5     		push	{r7, lr}
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 7, -8
+  38              		.cfi_offset 14, -4
+  39 0002 82B0     		sub	sp, sp, #8
+  40              		.cfi_def_cfa_offset 16
+  41 0004 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  17:.\main.c      ****     uint8 ch;
+  18:.\main.c      **** 
+  19:.\main.c      ****     UART_Start();
+  43              		.loc 1 19 0
+  44 0006 FFF7FEFF 		bl	UART_Start
+  20:.\main.c      ****     UART_UartPutString("CY8CKIT-042-BLE");
+  45              		.loc 1 20 0
+  46 000a 104B     		ldr	r3, .L4
+  47 000c 181C     		mov	r0, r3
+  48 000e FFF7FEFF 		bl	UART_UartPutString
+  49              	.L3:
+  21:.\main.c      ****   
+  22:.\main.c      ****     for(;;)
+  23:.\main.c      ****     { 
+  24:.\main.c      ****         
+  25:.\main.c      ****        
+  26:.\main.c      ****         ch = UART_UartGetChar();
+  50              		.loc 1 26 0
+  51 0012 FFF7FEFF 		bl	UART_UartGetChar
+  52 0016 021C     		mov	r2, r0
+  53 0018 FB1D     		add	r3, r7, #7
+  54 001a 1A70     		strb	r2, [r3]
+  27:.\main.c      ****         if(0u != ch && !Pin_1_Read())
+  55              		.loc 1 27 0
+  56 001c FB1D     		add	r3, r7, #7
+  57 001e 1B78     		ldrb	r3, [r3]
+  58 0020 002B     		cmp	r3, #0
+  59 0022 11D0     		beq	.L2
+  60              		.loc 1 27 0 is_stmt 0 discriminator 1
+  61 0024 FFF7FEFF 		bl	Pin_1_Read
+  62 0028 031C     		mov	r3, r0
+  63 002a 002B     		cmp	r3, #0
+  64 002c 0CD1     		bne	.L2
+  28:.\main.c      ****         {
+  29:.\main.c      ****                 Pin_Red_Write(!Pin_1_Read);
+  65              		.loc 1 29 0 is_stmt 1
+  66 002e 0020     		mov	r0, #0
+  67 0030 FFF7FEFF 		bl	Pin_Red_Write
+  30:.\main.c      ****                 UART_UartPutString("The symbol recieved is: ");
+  68              		.loc 1 30 0
+  69 0034 064B     		ldr	r3, .L4+4
+  70 0036 181C     		mov	r0, r3
+  71 0038 FFF7FEFF 		bl	UART_UartPutString
+  31:.\main.c      ****                 UART_UartPutChar(ch);
+  72              		.loc 1 31 0
+  73 003c FB1D     		add	r3, r7, #7
+  74 003e 1B78     		ldrb	r3, [r3]
+  75 0040 181C     		mov	r0, r3
+  76 0042 FFF7FEFF 		bl	UART_SpiUartWriteTxData
+ARM GAS  C:\Users\mliha\AppData\Local\Temp\cclu3FoX.s 			page 3
+
+
+  32:.\main.c      ****          }
+  33:.\main.c      ****           
+  34:.\main.c      ****     }
+  77              		.loc 1 34 0
+  78 0046 E4E7     		b	.L3
+  79              	.L2:
+  80 0048 E3E7     		b	.L3
+  81              	.L5:
+  82 004a C046     		.align	2
+  83              	.L4:
+  84 004c 00000000 		.word	.LC0
+  85 0050 10000000 		.word	.LC2
+  86              		.cfi_endproc
+  87              	.LFE35:
+  88              		.size	main, .-main
+  89              		.text
+  90              	.Letext0:
+  91              		.file 2 ".\\Generated_Source\\PSoC4/cytypes.h"
+  92              		.section	.debug_info,"",%progbits
+  93              	.Ldebug_info0:
+  94 0000 BD000000 		.4byte	0xbd
+  95 0004 0400     		.2byte	0x4
+  96 0006 00000000 		.4byte	.Ldebug_abbrev0
+  97 000a 04       		.byte	0x4
+  98 000b 01       		.uleb128 0x1
+  99 000c 56000000 		.4byte	.LASF15
+ 100 0010 01       		.byte	0x1
+ 101 0011 53010000 		.4byte	.LASF16
+ 102 0015 EE000000 		.4byte	.LASF17
+ 103 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 104 001d 00000000 		.4byte	0
+ 105 0021 00000000 		.4byte	.Ldebug_line0
+ 106 0025 02       		.uleb128 0x2
+ 107 0026 01       		.byte	0x1
+ 108 0027 06       		.byte	0x6
+ 109 0028 41010000 		.4byte	.LASF0
+ 110 002c 02       		.uleb128 0x2
+ 111 002d 01       		.byte	0x1
+ 112 002e 08       		.byte	0x8
+ 113 002f D2000000 		.4byte	.LASF1
+ 114 0033 02       		.uleb128 0x2
+ 115 0034 02       		.byte	0x2
+ 116 0035 05       		.byte	0x5
+ 117 0036 1D010000 		.4byte	.LASF2
+ 118 003a 02       		.uleb128 0x2
+ 119 003b 02       		.byte	0x2
+ 120 003c 07       		.byte	0x7
+ 121 003d 2E010000 		.4byte	.LASF3
+ 122 0041 02       		.uleb128 0x2
+ 123 0042 04       		.byte	0x4
+ 124 0043 05       		.byte	0x5
+ 125 0044 E5000000 		.4byte	.LASF4
+ 126 0048 02       		.uleb128 0x2
+ 127 0049 04       		.byte	0x4
+ 128 004a 07       		.byte	0x7
+ 129 004b 2D000000 		.4byte	.LASF5
+ 130 004f 02       		.uleb128 0x2
+ARM GAS  C:\Users\mliha\AppData\Local\Temp\cclu3FoX.s 			page 4
+
+
+ 131 0050 08       		.byte	0x8
+ 132 0051 05       		.byte	0x5
+ 133 0052 00000000 		.4byte	.LASF6
+ 134 0056 02       		.uleb128 0x2
+ 135 0057 08       		.byte	0x8
+ 136 0058 07       		.byte	0x7
+ 137 0059 3F000000 		.4byte	.LASF7
+ 138 005d 03       		.uleb128 0x3
+ 139 005e 04       		.byte	0x4
+ 140 005f 05       		.byte	0x5
+ 141 0060 696E7400 		.ascii	"int\000"
+ 142 0064 02       		.uleb128 0x2
+ 143 0065 04       		.byte	0x4
+ 144 0066 07       		.byte	0x7
+ 145 0067 15000000 		.4byte	.LASF8
+ 146 006b 04       		.uleb128 0x4
+ 147 006c 27000000 		.4byte	.LASF9
+ 148 0070 02       		.byte	0x2
+ 149 0071 A1       		.byte	0xa1
+ 150 0072 2C000000 		.4byte	0x2c
+ 151 0076 04       		.uleb128 0x4
+ 152 0077 0E000000 		.4byte	.LASF10
+ 153 007b 02       		.byte	0x2
+ 154 007c A3       		.byte	0xa3
+ 155 007d 48000000 		.4byte	0x48
+ 156 0081 02       		.uleb128 0x2
+ 157 0082 04       		.byte	0x4
+ 158 0083 04       		.byte	0x4
+ 159 0084 4D010000 		.4byte	.LASF11
+ 160 0088 02       		.uleb128 0x2
+ 161 0089 08       		.byte	0x8
+ 162 008a 04       		.byte	0x4
+ 163 008b 27010000 		.4byte	.LASF12
+ 164 008f 02       		.uleb128 0x2
+ 165 0090 01       		.byte	0x1
+ 166 0091 08       		.byte	0x8
+ 167 0092 E0000000 		.4byte	.LASF13
+ 168 0096 02       		.uleb128 0x2
+ 169 0097 04       		.byte	0x4
+ 170 0098 07       		.byte	0x7
+ 171 0099 5C010000 		.4byte	.LASF14
+ 172 009d 05       		.uleb128 0x5
+ 173 009e 22000000 		.4byte	.LASF18
+ 174 00a2 01       		.byte	0x1
+ 175 00a3 0F       		.byte	0xf
+ 176 00a4 5D000000 		.4byte	0x5d
+ 177 00a8 00000000 		.4byte	.LFB35
+ 178 00ac 54000000 		.4byte	.LFE35-.LFB35
+ 179 00b0 01       		.uleb128 0x1
+ 180 00b1 9C       		.byte	0x9c
+ 181 00b2 06       		.uleb128 0x6
+ 182 00b3 636800   		.ascii	"ch\000"
+ 183 00b6 01       		.byte	0x1
+ 184 00b7 11       		.byte	0x11
+ 185 00b8 6B000000 		.4byte	0x6b
+ 186 00bc 02       		.uleb128 0x2
+ 187 00bd 91       		.byte	0x91
+ARM GAS  C:\Users\mliha\AppData\Local\Temp\cclu3FoX.s 			page 5
+
+
+ 188 00be 77       		.sleb128 -9
+ 189 00bf 00       		.byte	0
+ 190 00c0 00       		.byte	0
+ 191              		.section	.debug_abbrev,"",%progbits
+ 192              	.Ldebug_abbrev0:
+ 193 0000 01       		.uleb128 0x1
+ 194 0001 11       		.uleb128 0x11
+ 195 0002 01       		.byte	0x1
+ 196 0003 25       		.uleb128 0x25
+ 197 0004 0E       		.uleb128 0xe
+ 198 0005 13       		.uleb128 0x13
+ 199 0006 0B       		.uleb128 0xb
+ 200 0007 03       		.uleb128 0x3
+ 201 0008 0E       		.uleb128 0xe
+ 202 0009 1B       		.uleb128 0x1b
+ 203 000a 0E       		.uleb128 0xe
+ 204 000b 55       		.uleb128 0x55
+ 205 000c 17       		.uleb128 0x17
+ 206 000d 11       		.uleb128 0x11
+ 207 000e 01       		.uleb128 0x1
+ 208 000f 10       		.uleb128 0x10
+ 209 0010 17       		.uleb128 0x17
+ 210 0011 00       		.byte	0
+ 211 0012 00       		.byte	0
+ 212 0013 02       		.uleb128 0x2
+ 213 0014 24       		.uleb128 0x24
+ 214 0015 00       		.byte	0
+ 215 0016 0B       		.uleb128 0xb
+ 216 0017 0B       		.uleb128 0xb
+ 217 0018 3E       		.uleb128 0x3e
+ 218 0019 0B       		.uleb128 0xb
+ 219 001a 03       		.uleb128 0x3
+ 220 001b 0E       		.uleb128 0xe
+ 221 001c 00       		.byte	0
+ 222 001d 00       		.byte	0
+ 223 001e 03       		.uleb128 0x3
+ 224 001f 24       		.uleb128 0x24
+ 225 0020 00       		.byte	0
+ 226 0021 0B       		.uleb128 0xb
+ 227 0022 0B       		.uleb128 0xb
+ 228 0023 3E       		.uleb128 0x3e
+ 229 0024 0B       		.uleb128 0xb
+ 230 0025 03       		.uleb128 0x3
+ 231 0026 08       		.uleb128 0x8
+ 232 0027 00       		.byte	0
+ 233 0028 00       		.byte	0
+ 234 0029 04       		.uleb128 0x4
+ 235 002a 16       		.uleb128 0x16
+ 236 002b 00       		.byte	0
+ 237 002c 03       		.uleb128 0x3
+ 238 002d 0E       		.uleb128 0xe
+ 239 002e 3A       		.uleb128 0x3a
+ 240 002f 0B       		.uleb128 0xb
+ 241 0030 3B       		.uleb128 0x3b
+ 242 0031 0B       		.uleb128 0xb
+ 243 0032 49       		.uleb128 0x49
+ 244 0033 13       		.uleb128 0x13
+ARM GAS  C:\Users\mliha\AppData\Local\Temp\cclu3FoX.s 			page 6
+
+
+ 245 0034 00       		.byte	0
+ 246 0035 00       		.byte	0
+ 247 0036 05       		.uleb128 0x5
+ 248 0037 2E       		.uleb128 0x2e
+ 249 0038 01       		.byte	0x1
+ 250 0039 3F       		.uleb128 0x3f
+ 251 003a 19       		.uleb128 0x19
+ 252 003b 03       		.uleb128 0x3
+ 253 003c 0E       		.uleb128 0xe
+ 254 003d 3A       		.uleb128 0x3a
+ 255 003e 0B       		.uleb128 0xb
+ 256 003f 3B       		.uleb128 0x3b
+ 257 0040 0B       		.uleb128 0xb
+ 258 0041 49       		.uleb128 0x49
+ 259 0042 13       		.uleb128 0x13
+ 260 0043 11       		.uleb128 0x11
+ 261 0044 01       		.uleb128 0x1
+ 262 0045 12       		.uleb128 0x12
+ 263 0046 06       		.uleb128 0x6
+ 264 0047 40       		.uleb128 0x40
+ 265 0048 18       		.uleb128 0x18
+ 266 0049 9642     		.uleb128 0x2116
+ 267 004b 19       		.uleb128 0x19
+ 268 004c 00       		.byte	0
+ 269 004d 00       		.byte	0
+ 270 004e 06       		.uleb128 0x6
+ 271 004f 34       		.uleb128 0x34
+ 272 0050 00       		.byte	0
+ 273 0051 03       		.uleb128 0x3
+ 274 0052 08       		.uleb128 0x8
+ 275 0053 3A       		.uleb128 0x3a
+ 276 0054 0B       		.uleb128 0xb
+ 277 0055 3B       		.uleb128 0x3b
+ 278 0056 0B       		.uleb128 0xb
+ 279 0057 49       		.uleb128 0x49
+ 280 0058 13       		.uleb128 0x13
+ 281 0059 02       		.uleb128 0x2
+ 282 005a 18       		.uleb128 0x18
+ 283 005b 00       		.byte	0
+ 284 005c 00       		.byte	0
+ 285 005d 00       		.byte	0
+ 286              		.section	.debug_aranges,"",%progbits
+ 287 0000 1C000000 		.4byte	0x1c
+ 288 0004 0200     		.2byte	0x2
+ 289 0006 00000000 		.4byte	.Ldebug_info0
+ 290 000a 04       		.byte	0x4
+ 291 000b 00       		.byte	0
+ 292 000c 0000     		.2byte	0
+ 293 000e 0000     		.2byte	0
+ 294 0010 00000000 		.4byte	.LFB35
+ 295 0014 54000000 		.4byte	.LFE35-.LFB35
+ 296 0018 00000000 		.4byte	0
+ 297 001c 00000000 		.4byte	0
+ 298              		.section	.debug_ranges,"",%progbits
+ 299              	.Ldebug_ranges0:
+ 300 0000 00000000 		.4byte	.LFB35
+ 301 0004 54000000 		.4byte	.LFE35
+ARM GAS  C:\Users\mliha\AppData\Local\Temp\cclu3FoX.s 			page 7
+
+
+ 302 0008 00000000 		.4byte	0
+ 303 000c 00000000 		.4byte	0
+ 304              		.section	.debug_line,"",%progbits
+ 305              	.Ldebug_line0:
+ 306 0000 69000000 		.section	.debug_str,"MS",%progbits,1
+ 306      02004500 
+ 306      00000201 
+ 306      FB0E0D00 
+ 306      01010101 
+ 307              	.LASF6:
+ 308 0000 6C6F6E67 		.ascii	"long long int\000"
+ 308      206C6F6E 
+ 308      6720696E 
+ 308      7400
+ 309              	.LASF10:
+ 310 000e 75696E74 		.ascii	"uint32\000"
+ 310      333200
+ 311              	.LASF8:
+ 312 0015 756E7369 		.ascii	"unsigned int\000"
+ 312      676E6564 
+ 312      20696E74 
+ 312      00
+ 313              	.LASF18:
+ 314 0022 6D61696E 		.ascii	"main\000"
+ 314      00
+ 315              	.LASF9:
+ 316 0027 75696E74 		.ascii	"uint8\000"
+ 316      3800
+ 317              	.LASF5:
+ 318 002d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 318      20756E73 
+ 318      69676E65 
+ 318      6420696E 
+ 318      7400
+ 319              	.LASF7:
+ 320 003f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 320      206C6F6E 
+ 320      6720756E 
+ 320      7369676E 
+ 320      65642069 
+ 321              	.LASF15:
+ 322 0056 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 322      4320342E 
+ 322      382E3420 
+ 322      32303134 
+ 322      30353236 
+ 323 0089 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m0 -mthumb -g -O"
+ 323      20726576 
+ 323      6973696F 
+ 323      6E203231 
+ 323      31333538 
+ 324 00bc 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 324      66756E63 
+ 324      74696F6E 
+ 324      2D736563 
+ 324      74696F6E 
+ 325              	.LASF1:
+ARM GAS  C:\Users\mliha\AppData\Local\Temp\cclu3FoX.s 			page 8
+
+
+ 326 00d2 756E7369 		.ascii	"unsigned char\000"
+ 326      676E6564 
+ 326      20636861 
+ 326      7200
+ 327              	.LASF13:
+ 328 00e0 63686172 		.ascii	"char\000"
+ 328      00
+ 329              	.LASF4:
+ 330 00e5 6C6F6E67 		.ascii	"long int\000"
+ 330      20696E74 
+ 330      00
+ 331              	.LASF17:
+ 332 00ee 433A5C55 		.ascii	"C:\\Users\\mliha\\Desktop\\Project6\\Project5.cydsn"
+ 332      73657273 
+ 332      5C6D6C69 
+ 332      68615C44 
+ 332      65736B74 
+ 333 011c 00       		.ascii	"\000"
+ 334              	.LASF2:
+ 335 011d 73686F72 		.ascii	"short int\000"
+ 335      7420696E 
+ 335      7400
+ 336              	.LASF12:
+ 337 0127 646F7562 		.ascii	"double\000"
+ 337      6C6500
+ 338              	.LASF3:
+ 339 012e 73686F72 		.ascii	"short unsigned int\000"
+ 339      7420756E 
+ 339      7369676E 
+ 339      65642069 
+ 339      6E7400
+ 340              	.LASF0:
+ 341 0141 7369676E 		.ascii	"signed char\000"
+ 341      65642063 
+ 341      68617200 
+ 342              	.LASF11:
+ 343 014d 666C6F61 		.ascii	"float\000"
+ 343      7400
+ 344              	.LASF16:
+ 345 0153 2E5C6D61 		.ascii	".\\main.c\000"
+ 345      696E2E63 
+ 345      00
+ 346              	.LASF14:
+ 347 015c 73697A65 		.ascii	"sizetype\000"
+ 347      74797065 
+ 347      00
+ 348              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br
